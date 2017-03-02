@@ -9,7 +9,7 @@ This guide is meant as an explaination at first but then a cheat sheet that you 
 We will discuss the most commonly used commands
 
 <ul>Common Commands Seen in Test Recorder:
-<li>app.Tap();<li>
+<li>app.Tap();
 <li>app.DismissKeyboard ();</li>
 <li>app.EnterText (x => x.Id ("edit_phone"), "5555555555");</li>
 <li>app.PressEnter();
@@ -19,15 +19,15 @@ We will discuss the most commonly used commands
 <li>app.Screenshot ("User enters phone number");</li>
 <li>app.WaitForElement("button2");
 </ul>
-
+----
 <ul>Common Notations and Terms seen in Test Recorder:
-<li>app.Tap(x=>x.Marked("hello_button"));<li>
+<li>app.Tap(x=>x.Marked("hello_button"));
 <li>app.Tap(x=>x.Class("UIButton"));</li>
 <li>app.Tap(x=>x.Id("hello_button"));</li>
 <li>app.Tap(x=>x.Label("hello_button"));</li>
 <li>app.Tap(x=>x.Text("Hello there!"));</li>
 </ul>
-
+----
 <ul>Common repl commands:
 <li>tree</li>
 <li>app.Flash("myButton");</li>
@@ -37,7 +37,7 @@ We will discuss the most commonly used commands
 <li>app.Repl ();</li>
 <li>copy
 </ul>
-
+----
 <ul>
 Common UI commands:
 <li>app.DismissKeyboard ();</li>

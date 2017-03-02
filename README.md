@@ -20,6 +20,11 @@ We will discuss the most commonly used commands
 <li>app.WaitForElement("button2");
 </ul>
 
+Definitions of the Commands Seen in Test Recorder:
+1. app.Tap("button1"); 
+* app.Tap("button1") is the most common guesture you'll use.  It mimics a user's tap on the app.  The "button1" represent a button marked with a "button1" id or label.
+2. app.DismissKeyboard();
+
 <ul>Definitions of the Commands Seen in Test Recorder:
 <li>app.Tap("button1"); 
 * app.Tap("button1") is the most common guesture you'll use.  It mimics a user's tap on the app.  The "button1" represent a button marked with a "button1" id or label.

@@ -12,12 +12,21 @@ We will discuss the most commonly used commands
 <li>app.Tap();<li>
 <li>app.DismissKeyboard ();</li>
 <li>app.EnterText (x => x.Id ("edit_phone"), "5555555555");</li>
+<li>app.PressEnter();
+<li>app.ScrollUp ("CREATE", "linear_item");</li>
+<li>app.ScrollDown ("CREATE", "linear_item");</li>
 <li>app.ScrollDownTo ("CREATE", "linear_item");</li>
 <li>app.Screenshot ("User enters phone number");</li>
-<li>app.PressEnter();
 <li>app.WaitForElement("button2");
 </ul>
 
+<ul>Common Notations and Terms seen in Test Recorder:
+<li>app.Tap(x=>x.Marked("hello_button"));<li>
+<li>app.Tap(x=>x.Class("UIButton"));</li>
+<li>app.Tap(x=>x.Id("hello_button"));</li>
+<li>app.Tap(x=>x.Label("hello_button"));</li>
+<li>app.Tap(x=>x.Text("Hello there!"));</li>
+</ul>
 
 
 <ul>Common repl commands:

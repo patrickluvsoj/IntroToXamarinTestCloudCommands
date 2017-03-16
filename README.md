@@ -16,8 +16,8 @@ COMMON COMMANDS - CHEAT SHEET:
 <li>app.WaitForElement("button2");
 <li>app.Screenshot ("User enters phone number");</li>
 </ul>
-
-
+  
+       
 DEFINITION OF COMMAND COMMANDS:
 
 Definitions of the Commands Seen in Test Recorder:

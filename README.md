@@ -5,8 +5,19 @@ The framework we will be exploring is called UITest -- written in the language o
 
 You will see these commands in both Xamarin Test Recorder and in the REPL
 
-This guide is meant as an explaination at first but then a cheat sheet that you can refer back to.
-We will discuss the most commonly used commands
+This guide is meant as an explaination at first but also a cheat sheet that you can refer back to.
+We will discuss the most commonly used commands.
+
+COMMON COMMANDS - CHEAT SHEET:
+<li>app.Tap("button1"); 
+<li>app.EnterText (x => x.Id ("edit_phone"), "5555555555");</li>
+<li>app.PressEnter();
+<li>app.DismissKeyboard ();</li>
+<li>app.WaitForElement("button2");
+<li>app.Screenshot ("User enters phone number");</li>
+</ul>
+
+DEFINITION OF COMMAND COMMANDS:
 
 Definitions of the Commands Seen in Test Recorder:
 1. app.Tap("button1"); 
@@ -21,7 +32,6 @@ Definitions of the Commands Seen in Test Recorder:
 * this is how you get your test to wait for a particular element for up to 90 seconds.  This is really important when your app needs to do a lot of web requests or if the app takes some time to process your requests.  Rather than failing if the element doesn't appear right away, it will wait up to 90 seconds for the element to appear.  This is important when doing your local tests but even more important when you're doing your tests on the Xamarin Test Cloud.
 6. app.Screenshot("User enters phone number")
 * this is how you tell your application to take a screenshot -- in the Xamarin Test Cloud UI, each step will be denoted by the text you write in this method.  In the above case, it will be "User enters phone number" -- and the Xamarin Test Cloud web page will show a screenshot of your application.
-
 
 <ul>Definitions of the Commands Seen in Test Recorder:
 <li>app.Tap("button1"); 

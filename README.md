@@ -15,9 +15,9 @@ COMMON COMMANDS - CHEAT SHEET:
 <li>app.DismissKeyboard ();</li>
 <li>app.WaitForElement("button2");
 <li>app.Screenshot ("User enters phone number");</li>
-</ul>
-  
-</n>       
+</ul>                                                                    
+<br />   <br />   
+ 
 DEFINITION OF COMMON COMMANDS:
 
 Definitions of the Commands Seen in Test Recorder:

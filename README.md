@@ -50,7 +50,7 @@ In both cases, the command is looking for any UI elements with an "Id", "label",
 
 In general - you should prefer to link your tests to an "Id" or a "label" over "text" - the reason is that the "text" can easily change as the marketing or business requirements or even language requirements can necessitate frequent changing of the text.
 
-For more about the general C# syntax of this => notation - take a look at this (http://stackoverflow.com/questions/274022/how-do-i-pronounce-as-used-in-lambda-expressions-in-net "post").
+For more about the general C# syntax of this => notation - take a look at this [post](http://stackoverflow.com/questions/274022/how-do-i-pronounce-as-used-in-lambda-expressions-in-net).
 
 
 

@@ -52,7 +52,8 @@ In general - you should prefer to link your tests to an "Id" or a "label" over "
 
 For more about the general C# syntax of this => notation - take a look at this [post](http://stackoverflow.com/questions/274022/how-do-i-pronounce-as-used-in-lambda-expressions-in-net).
 
-
+---------------------------
+# Why do I so often see x=>x.Class("something") and why do I sometime even see a .Index(3) after it?
 
 CLASS / INDEX(0) / what happens when the thing you get references something that shows up more than "once"
 

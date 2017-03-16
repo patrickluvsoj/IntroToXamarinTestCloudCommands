@@ -17,8 +17,8 @@ COMMON COMMANDS - CHEAT SHEET:
 <li>app.Screenshot ("User enters phone number");</li>
 </ul>
   
-       
-DEFINITION OF COMMAND COMMANDS:
+</n>       
+DEFINITION OF COMMON COMMANDS:
 
 Definitions of the Commands Seen in Test Recorder:
 1. app.Tap("button1"); 

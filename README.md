@@ -59,7 +59,7 @@ When you look at the commands that Test Recorder gives back to you -- it will of
 
 However, sometimes the commands cannot be simplied into the above "straightforward" style.  This is the case when the Id or label fields are not clearly marked.  
 
-:star: ``` Why would Id/label not be clearly marked?  It is actually up to the developer of the iOS or Android application itself, who can set the Id or label of the different controls when they are developing the app.  Setting the Id/label increases the robustness and simplicity of the tests and so we advocated a close collaboration between QA and your application developers.) ```
+:star: ``` Why would Id/label not be clearly marked?  It is actually up to the developer of the iOS or Android application itself, who can set the Id or label of the different controls when they are developing the app.  Setting the Id/label increases the robustness and simplicity of the tests and so we advocate a close collaboration between the QA team and application developers.) ```
 
 So in the case when the Id or label fields are not clear -- then Test Recorder will start chaining Classes and Indexes so you'll see something like this:
 app.Tap(x=>x.Class("UITextField").Index(0));
@@ -69,10 +69,12 @@ So to translate that; it is looking through all of the elements of the UI, and t
 ---------
 What do you mean by Class?
 
+```Everthing you see on the screen of an app is of a class with specific behaviors.  You intuitively know that a Button, a Listview, a Label, and Text Entry Field have different properties and features and behaviors.  What you may not have known is that these are all different considered "classes" and that they are officially refered to by specific names.  For example, in iOS that same list of classes is called UIButton, UITableView, UILabel, and UITextView.   All those behaviors were programmed by the framework designers (on iOS or Android) and then specifically modified by the programmers on your team to give your app it's unique UI and set of behaviors.  
 
+```
 
 ---------
-What is Index(0)?  
+What do you mean by Index(0)?  
 Simply put Index(0) is the first element in the group of elements.
 
 So in this group of elements:
@@ -81,14 +83,16 @@ So in this group of elements:
 Index(0) of the above would be 0.  Index(1) would be 55.  Index(2) would be 33.
 
 So to recap - would you see something like this:
-app.Tap(x=>x.Class("UIView").Index(23));
+app.Tap(x=>x.Class("UIView").Index(3));
 
-It is looking for 
+It is looking for all the UI elements of the class "UIView" -- and then please show me the 4th item of that list of elements.  (Remember counting starts at 0 for this Index. 
 
+----------
+#Why two versions of very similar commands?
+app.ScrollDown() vs. app.ScrollDown("CREATE", "linear_item")  
+app.ScrollDown() vs. app.ScrollDownTo("something")
 
-
-CLASS / INDEX(0) / what happens when the thing you get references something that shows up more than "once"
-
+specificity / speed
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 

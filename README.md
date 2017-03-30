@@ -55,9 +55,11 @@ For more about the general C# syntax of this => notation - take a look at this [
 ---------------------------
 # Why do I so often see x=>x.Class("something") and why do I sometime even see a .Index(3) after it?
 
-When you look at the commands that Test Recorder gives back to you -- it will often show up as app.Tap(x=>x.Marked("button1")).  These are the more straightforward outputs that you'll see in Test Recorder.
+When you look at the commands that Test Recorder gives back to you -- it will often show up as app.Tap(x=>x.Marked("button1")).  This is the most straightforward output type that you'll see in Test Recorder.
 
-However, sometimes the commands cannot be simplied into the above "straightforward" style.  This is the case when the Id or label fields are not clearly marked.  (By the way, the developer of the application itself, can set the Id or label of the different controls when they are developing the app.)
+However, sometimes the commands cannot be simplied into the above "straightforward" style.  This is the case when the Id or label fields are not clearly marked.  
+
+<h1>Why would they not be clearly marked?  It is actually up to the developer of the iOS or Android application itself, who can set the Id or label of the different controls when they are developing the app.  Setting the Id/label increases the robustness and simplicity of the tests and so we advocated a close collaboration between QA and your application developers.)</h1>
 
 So in the case when the Id or label fields are not clear -- then it will start chaining Classes and Indexes so you'll see something like this:
 app.Tap(x=>x.Class("UITextField").Index(0));

@@ -59,12 +59,12 @@ When you look at the commands that Test Recorder gives back to you -- it will of
 
 However, sometimes the commands cannot be simplied into the above "straightforward" style.  This is the case when the Id or label fields are not clearly marked.  
 
-<h1>Why would they not be clearly marked?  It is actually up to the developer of the iOS or Android application itself, who can set the Id or label of the different controls when they are developing the app.  Setting the Id/label increases the robustness and simplicity of the tests and so we advocated a close collaboration between QA and your application developers.)</h1>
+''' :star: Why would Id/label not be clearly marked?  It is actually up to the developer of the iOS or Android application itself, who can set the Id or label of the different controls when they are developing the app.  Setting the Id/label increases the robustness and simplicity of the tests and so we advocated a close collaboration between QA and your application developers.) :star: '''
 
-So in the case when the Id or label fields are not clear -- then it will start chaining Classes and Indexes so you'll see something like this:
+So in the case when the Id or label fields are not clear -- then Test Recorder will start chaining Classes and Indexes so you'll see something like this:
 app.Tap(x=>x.Class("UITextField").Index(0));
 
-So to translate that --> it looking through all of the elements of the UI, and then making a list of all the elements with Class("UITextField") and then in that list, it is finding the element marked Index(0).
+So to translate that; it is looking through all of the elements of the UI, and then making a list of all the elements with Class("UITextField") and then in that list, it is finding the element marked Index(0).
 
 ---------
 What do you mean by Class?

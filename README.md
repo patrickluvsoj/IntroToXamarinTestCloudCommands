@@ -87,12 +87,25 @@ app.Tap(x=>x.Class("UIView").Index(3));
 
 It is looking for all the UI elements of the class "UIView" -- and then please show me the 4th item of that list of elements.  (Remember counting starts at 0 for this Index. 
 
-----------
-#Why two versions of very similar commands?
+
+# Why two versions of very similar commands?
 app.ScrollDown() vs. app.ScrollDown("CREATE", "linear_item")  
 app.ScrollDown() vs. app.ScrollDownTo("something")
 
-specificity / speed
+specificity / speed..  
+
+This comes down to specificity of what you're looking to do and speed by which you want this command to be executed.
+
+# What are common errors or gotcha's to look out for?
+Remember this is a UI test -- and you've got to factor in the speed of your app in writing the tests.  There is some give in all of these commands but if your app is moving slower than the test is executing then your test will fail in situations where it shouldn't.  
+
+Here's what to watch out for:  
+-heavy data processing
+-web requests that can take a long time-
+-keyboarding popping up and hiding buttons or other fields)
+Here's how to fix it:
+
+
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 

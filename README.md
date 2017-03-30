@@ -67,14 +67,13 @@ app.Tap(x=>x.Class("UITextField").Index(0));
 So to translate that; it is looking through all of the elements of the UI, and then making a list of all the elements with Class("UITextField") and then in that list, it is finding the element marked Index(0).
 
 ---------
-What do you mean by Class?
+**What do you mean by Class?**
 
-```Everthing you see on the screen of an app is of a class with specific behaviors.  You intuitively know that a Button, a Listview, a Label, and Text Entry Field have different properties and features and behaviors.  What you may not have known is that these are all different considered "classes" and that they are officially refered to by specific names.  For example, in iOS that same list of classes is called UIButton, UITableView, UILabel, and UITextView.   All those behaviors were programmed by the framework designers (on iOS or Android) and then specifically modified by the programmers on your team to give your app it's unique UI and set of behaviors.  
+Everthing you see on the screen of an app is of a class with specific behaviors.  You intuitively know that a Button, a Listview, a Label, and Text Entry Field have different properties and features and behaviors.  What you may not have known is that these are all different considered "classes" and that they are officially refered to by specific names.  For example, in iOS that same list of classes is called UIButton, UITableView, UILabel, and UITextView.   All those behaviors were programmed by the framework designers (on iOS or Android) and then specifically modified by the programmers on your team to give your app it's unique UI and set of behaviors.  
 
-```
 
 ---------
-What do you mean by Index(0)?  
+**What do you mean by Index(0)?**
 Simply put Index(0) is the first element in the group of elements.
 
 So in this group of elements:

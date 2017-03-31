@@ -53,6 +53,7 @@ In general - you should prefer to link your tests to an "Id" or a "label" over "
 For more about the general C# syntax of this => notation - take a look at this [post](http://stackoverflow.com/questions/274022/how-do-i-pronounce-as-used-in-lambda-expressions-in-net).
 
 ---------------------------
+DRAFT:
 # Why do I so often see x=>x.Class("something") and why do I sometime even see a .Index(3) after it?
 
 When you look at the commands that Test Recorder gives back to you -- it will often show up as app.Tap(x=>x.Marked("button1")).  This is the most straightforward output type that you'll see in Test Recorder.
@@ -87,7 +88,7 @@ app.Tap(x=>x.Class("UIView").Index(3));
 
 It is looking for all the UI elements of the class "UIView" -- and then please show me the 4th item of that list of elements.  (Remember counting starts at 0 for this Index. 
 
-
+DRAFT:
 # Why two versions of very similar commands?
 app.ScrollDown() vs. app.ScrollDown("CREATE", "linear_item")  
 app.ScrollDown() vs. app.ScrollDownTo("something")
@@ -96,6 +97,8 @@ specificity / speed..
 
 This comes down to specificity of what you're looking to do and speed by which you want this command to be executed.
 
+
+DRAFT:
 # What are common errors or gotcha's to look out for?
 Remember this is a UI test -- and you've got to factor in the speed of your app in writing the tests.  There is some give in all of these commands but if your app is moving slower than the test is executing then your test will fail in situations where it shouldn't.  
 
@@ -104,6 +107,9 @@ Here's what to watch out for:
 -web requests that can take a long time-
 -keyboarding popping up and hiding buttons or other fields)
 Here's how to fix it:
+
+app.WaitForElement(x => x.Marked("logoutButton"));
+Thread.Sleep (3000); //this would be 3 seconds
 
 
 

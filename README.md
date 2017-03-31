@@ -100,8 +100,8 @@ This comes down to specificity of what you're looking to do and speed by which y
 DRAFT
 # App.ClearText() -> Why do we need this?
 
-Sometimes tests will go back to fields that have been filled out or partially filled out.
-So that we can get the screen on the app to an understood starting state we use app.ClearText() to clear any text in a text field.  
+Sometimes tests will go back and forth through screen and to fields that have been filled out or partially filled out.
+Rather than keeping track of exactly what has been typed out in previous steps - it is better that we just get the screen on the app to an understood starting state.  So we use app.ClearText() to clear any text in a text field.  This isn't used all the time but if your test does back and forth through screens and re-types data into fields, this is a good practice!
 
 DRAFT:
 # What are common errors or gotcha's to look out for?

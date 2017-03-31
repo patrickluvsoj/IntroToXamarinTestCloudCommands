@@ -86,7 +86,7 @@ Index(0) of the above would be 0.  Index(1) would be 55.  Index(2) would be 33.
 So to recap - would you see something like this:
 app.Tap(x=>x.Class("UIView").Index(3));
 
-It is looking for all the UI elements of the class "UIView" -- and then please show me the 4th item of that list of elements.  (Remember counting starts at 0 for this Index. 
+It is looking for all the UI elements of the class "UIView" -- and then please show me the 4th item of that list of elements.  (Remember counting starts at 0 for Index() ).
 
 DRAFT:
 # Why two versions of very similar commands?
@@ -97,6 +97,11 @@ specificity / speed..
 
 This comes down to specificity of what you're looking to do and speed by which you want this command to be executed.
 
+DRAFT
+# App.ClearText() -> Why do we need this?
+
+Sometimes tests will go back to fields that have been filled out or partially filled out.
+So that we can get the screen on the app to an understood starting state we use app.ClearText() to clear any text in a text field.  
 
 DRAFT:
 # What are common errors or gotcha's to look out for?
@@ -110,6 +115,7 @@ Here's how to fix it:
 
 app.WaitForElement(x => x.Marked("logoutButton"));
 Thread.Sleep (3000); //this would be 3 seconds
+
 
 
 

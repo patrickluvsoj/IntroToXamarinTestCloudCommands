@@ -130,8 +130,8 @@ Here's what to watch out for:
 -keyboarding popping up and hiding buttons or other fields)
 Here's how to fix it:
 
-app.WaitForElement(x => x.Marked("logoutButton")); <br/ >
-Thread.Sleep (3000);   //this would be 3 seconds  <br/ >
+app.WaitForElement(x => x.Marked("logoutButton")); <br />
+Thread.Sleep (3000);   //this would be 3 seconds  <br />
 
 
 

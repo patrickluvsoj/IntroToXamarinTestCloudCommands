@@ -90,11 +90,16 @@ It is looking for all the UI elements of the class "UIView" -- and then please s
 
 DRAFT:
 # Why are there two versions of very similar commands?
-For example, there is app.ScrollDown() and there is app.ScrollDownTo("something")
+For example, there is app.ScrollDown() and there is app.ScrollDownTo("my_element")
 Also there is app.ScrollDown() but also app.ScrollDown("CREATE", "linear_item")  
 
 Specificity and speed.  
 
+So let's compare app.ScrollDown() vs. app.ScrollDownTo("something")
+
+If you just type app.ScrollDown() - it's easier to type out but it will only always scroll down a certain fixed amount down.  You really don't have much control besides knowing it will will generally mimic a person scrolling down on a page.
+
+However, if you write app.ScrollDownTo("my_element") then it will scroll down until it finds the item which you specific in the quotes.  In this case it will scroll down to a UI element labeled "my_element".
 
 
 
@@ -103,7 +108,10 @@ This comes down to specificity of what you're looking to do and speed by which y
 DRAFT
 # App.ClearText() -> Why do we need this?
 
-Sometimes tests will go back and forth through screen and to fields that have been filled out or partially filled out.
+App.ClearText() will empty out a text field so that when you are going to write out text you know you're writing in a fully cleared out text view. 
+
+You don't need to do this everytime you write tests.  So should you include this?  Sometimes tests will go back and forth through screens and to fields that have been filled out or previously or partially filled out.
+
 Rather than keeping track of exactly what has been typed out in previous steps - it is better that we just get the screen on the app to an understood starting state.  So we use app.ClearText() to clear any text in a text field.  This isn't used all the time but if your test does back and forth through screens and re-types data into fields, this is a good practice!
 
 DRAFT:

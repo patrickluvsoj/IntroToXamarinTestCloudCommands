@@ -101,8 +101,11 @@ If you just type app.ScrollDown() - it's easier to type out but it will only alw
 
 However, if you write app.ScrollDownTo("my_element") then it will scroll down until it finds the item which you specify in quotes.  In this case it will scroll down to a UI element labeled "my_element".
 
-EXAMPLE 2
-Also there is app.ScrollDownTo("my_element") but also app.ScrollDownTo("my_element", "linear_item")  
+EXAMPLE 2 !!!! IMPORTANT !!!!
+Also there is app.ScrollDownTo("my_element") but also app.ScrollDownTo("my_element", "linear_layout")  
+In this case, both commands do the same thing -- but the second commands has a second input.  That second input says where to look for the ScrollDownTo.  This makes it more SPECIFIC and it will also make the command run faster because you're actually helping the test runner know where to look for the item.  So you added more SPECIFICITY and SPEED.  
+
+This particular example is important because something tests will fail because they take too long and if the test can't find the element -- it may (incorrectly) think it's because that element just doesn't exist.  So I recommend adding this particular type of specificity to your tests.
 
 
 

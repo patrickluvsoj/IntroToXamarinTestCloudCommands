@@ -91,15 +91,18 @@ It is looking for all the UI elements of the class "UIView" -- and then please s
 DRAFT:
 # Why are there two versions of very similar commands?
 For example, there is app.ScrollDown() and there is app.ScrollDownTo("my_element")
-Also there is app.ScrollDown() but also app.ScrollDown("CREATE", "linear_item")  
 
 Specificity and speed.  
 
+EXAMPLE 1
 So let's compare app.ScrollDown() vs. app.ScrollDownTo("something")
 
 If you just type app.ScrollDown() - it's easier to type out but it will only always scroll down a certain fixed amount down.  You really don't have much control besides knowing it will will generally mimic a person scrolling down on a page.
 
-However, if you write app.ScrollDownTo("my_element") then it will scroll down until it finds the item which you specific in the quotes.  In this case it will scroll down to a UI element labeled "my_element".
+However, if you write app.ScrollDownTo("my_element") then it will scroll down until it finds the item which you specify in quotes.  In this case it will scroll down to a UI element labeled "my_element".
+
+EXAMPLE 2
+Also there is app.ScrollDownTo("my_element") but also app.ScrollDownTo("my_element", "linear_item")  
 
 
 
@@ -108,7 +111,7 @@ This comes down to specificity of what you're looking to do and speed by which y
 DRAFT
 # App.ClearText() -> Why do we need this?
 
-App.ClearText() will empty out a text field so that when you are going to write out text you know you're writing in a fully cleared out text view. 
+App.ClearText() will empty out a text field so that when you are going to write out text you know you're writing in a fully cleared out text field. 
 
 You don't need to do this everytime you write tests.  So should you include this?  Sometimes tests will go back and forth through screens and to fields that have been filled out or previously or partially filled out.
 
@@ -124,8 +127,8 @@ Here's what to watch out for:
 -keyboarding popping up and hiding buttons or other fields)
 Here's how to fix it:
 
-app.WaitForElement(x => x.Marked("logoutButton"));
-Thread.Sleep (3000); //this would be 3 seconds
+app.WaitForElement(x => x.Marked("logoutButton")); <br/ >
+Thread.Sleep (3000);   //this would be 3 seconds  <br/ >
 
 
 

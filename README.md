@@ -89,11 +89,14 @@ app.Tap(x=>x.Class("UIView").Index(3));
 It is looking for all the UI elements of the class "UIView" -- and then please show me the 4th item of that list of elements.  (Remember counting starts at 0 for Index() ).
 
 DRAFT:
-# Why two versions of very similar commands?
-app.ScrollDown() vs. app.ScrollDown("CREATE", "linear_item")  
-app.ScrollDown() vs. app.ScrollDownTo("something")
+# Why are there two versions of very similar commands?
+For example, there is app.ScrollDown() and there is app.ScrollDownTo("something")
+Also there is app.ScrollDown() but also app.ScrollDown("CREATE", "linear_item")  
 
-specificity / speed..  
+Specificity and speed.  
+
+
+
 
 This comes down to specificity of what you're looking to do and speed by which you want this command to be executed.
 

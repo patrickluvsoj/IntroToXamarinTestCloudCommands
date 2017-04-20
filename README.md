@@ -133,8 +133,65 @@ Here's how to fix it:
 app.WaitForElement(x => x.Marked("logoutButton")); <br />
 Thread.Sleep (3000);   //this would be 3 seconds  <br />
 
+# Common REPL : Tree / FLASH / Query 
+The REPL is the interactive window that lets you see what UI elements are displaying on the mobile app's screen and it also lets you interact with those elements directly.
 
+In general, the commands are the same that you would either write yourself in Xamarin Studio or Visual Studio and they are also the same that would show up when you use Xamarin Test Recorder.
 
+If you want a list of common commands - you can click [here:] <https://github.com/andrewchungxam/XamarinTestCloudReference/blob/master/README.md>  
+
+The general workflow would look like this.  Launch REPL from Xamarin Test Recorder or you can write this directly in your tests in Xamarin Test Cloud like this:
+
+```
+[Test]
+public void LaunchRepl()
+{
+ app.Repl();
+}
+```
+
+NOTE!  Remember - app.Repl() is great for running local tests and writing out the tests.  When you are ready to actually run the tests in the cloud (on our Xamarin Test Cloud servers with actual devices) - you don't want to run this app.Repl() command.  So what you would do is comment out this test which means it will be ignored by Xamarin Test Cloud.  You comment out lines of code by add // marks before the lines of code.
+
+```
+//[Test]
+//public void LaunchRepl()
+//{
+// app.Repl();
+//}
+```
+
+GENERAL WORKFLOW:
+When you use app.Repl() - the general workflow looks like this:
+1) See what's on the screen by typing this command:
+```
+tree
+```
+2) Interact with what's on the screen with all the above commands you've learned.  For example - you might be on a login screen and you might type the following commands in REPL
+
+```
+app.Tap(x=>x.Marked("UserName");
+app.EnterText("andrew");
+app.DismissKeyboard();
+
+app.Tap(x=>x.Marked("Password");
+app.EnterText("myPassword");
+app.DismissKeyboard();
+
+app.Tap(x=>x.Marked("LoginButton"));
+```
+
+3) Next in the Repl you can type out the following word:
+```copy
+```
+And it will automatically copy the work that you've done.  You can now simply Paste these commands into Xamarin Studio / Visual Studio.  You may have to do some cleanup - but in general you should be good to go!  (Also sometime there will be an extra semi-colon at the end of your commands -- make sure you delete these one you're in Xamarin Studio / Visual Studio
+
+Special note:
+a) Suppose you are looking at two buttons on your screen.  You could simply app.Tap them but then if you choose the wrong one - it will actually tap the button and you'll move around the app.  Not a big deal but it can be cumbersome and take time moving from screen to screen.  In these situations - simply use the app.Flash command.  This will flash the relevant element on the screen - thereby letting you know if you've selected the correct element -- saving you the hassel of moving from screen to screen.
+
+So to continue the same example above you would type:
+app.Flash(x=>x.Marked("LoginButton") -- if you've got it right, then the Button will start flashing on the screen.
+
+This was a quick overview of working with REPL - if you want to read more, go here on our [official docs.[ <https://developer.xamarin.com/guides/testcloud/uitest/working-with/repl/>
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 

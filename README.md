@@ -163,9 +163,11 @@ NOTE!  Remember - app.Repl() is great for running local tests and writing out th
 GENERAL WORKFLOW:
 When you use app.Repl() - the general workflow looks like this:
 1) See what's on the screen by typing this command:
+
 ```
 tree
 ```
+
 2) Interact with what's on the screen with all the above commands you've learned.  For example - you might be on a login screen and you might type the following commands in REPL
 
 ```
@@ -181,8 +183,11 @@ app.Tap(x=>x.Marked("LoginButton"));
 ```
 
 3) Next in the Repl you can type out the following word:
-```copy
+
 ```
+copy
+```
+
 And it will automatically copy the work that you've done.  You can now simply Paste these commands into Xamarin Studio / Visual Studio.  You may have to do some cleanup - but in general you should be good to go!  (Also sometime there will be an extra semi-colon at the end of your commands -- make sure you delete these one you're in Xamarin Studio / Visual Studio
 
 Special note:

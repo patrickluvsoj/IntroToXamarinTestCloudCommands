@@ -8,7 +8,7 @@ You will see these commands in both Xamarin Test Recorder and in the REPL
 This guide is meant as an explaination at first but also a cheat sheet that you can refer back to.
 We will discuss the most commonly used commands.
 
-This article that you are reading will introduce commands as they come up within your Test Project — but if you just want to see a list of the most common commands you can look at this other [cheat sheet.] <https://github.com/andrewchungxam/XamarinTestCloudReference>
+This article that you are reading will introduce commands as they come up within your Test Project — but if you just want to see a list of the most common commands you can look at this other [cheat sheet.] (https://github.com/andrewchungxam/XamarinTestCloudReference)
 
 COMMON COMMANDS - CHEAT SHEET:
 <li>app.Tap("button1"); 
@@ -196,5 +196,6 @@ app.Flash(x=>x.Marked("LoginButton") -- if you've got it right, then the Button 
 
 This was a quick overview of working with REPL - if you want to read more, go here on our [official docs.] <https://developer.xamarin.com/guides/testcloud/uitest/working-with/repl/>
 
-This article will introduce commands as they come up within your Test Project — but if you just want to see a list of the most common commands you can look at this other [cheat sheet.] <https://github.com/andrewchungxam/XamarinTestCloudReference>
+This article will introduce commands as they come up within your Test Project — but if you just want to see a list of the most common commands you can look at this other [cheat sheet.] (https://github.com/andrewchungxam/XamarinTestCloudReference)
+
 

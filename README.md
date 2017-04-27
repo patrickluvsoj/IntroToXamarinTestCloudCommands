@@ -8,6 +8,8 @@ You will see these commands in both Xamarin Test Recorder and in the REPL
 This guide is meant as an explaination at first but also a cheat sheet that you can refer back to.
 We will discuss the most commonly used commands.
 
+This article that you are reading will introduce commands as they come up within your Test Project — but if you just want to see a list of the most common commands you can look at this other [cheat sheet.] <https://github.com/andrewchungxam/XamarinTestCloudReference>
+
 COMMON COMMANDS - CHEAT SHEET:
 <li>app.Tap("button1"); 
 <li>app.EnterText (x => x.Id ("edit_phone"), "5555555555");</li>
@@ -53,7 +55,6 @@ In general - you should prefer to link your tests to an "Id" or a "label" over "
 For more about the general C# syntax of this => notation - take a look at this [post](http://stackoverflow.com/questions/274022/how-do-i-pronounce-as-used-in-lambda-expressions-in-net).
 
 ---------------------------
-DRAFT:
 # Why do I so often see x=>x.Class("something") and why do I sometime even see a .Index(3) after it?
 
 When you look at the commands that Test Recorder gives back to you -- it will often show up as app.Tap(x=>x.Marked("button1")).  This is the most straightforward output type that you'll see in Test Recorder.
@@ -88,7 +89,6 @@ app.Tap(x=>x.Class("UIView").Index(3));
 
 It is looking for all the UI elements of the class "UIView" -- and then please show me the 4th item of that list of elements.  (Remember counting starts at 0 for Index() ).
 
-DRAFT:
 # Why are there two versions of very similar commands?
 For example, there is app.ScrollDown() and there is app.ScrollDownTo("my_element")
 
@@ -111,7 +111,6 @@ This particular example is important because something tests will fail because t
 
 This comes down to specificity of what you're looking to do and speed by which you want this command to be executed.
 
-DRAFT
 # App.ClearText() -> Why do we need this?
 
 App.ClearText() will empty out a text field so that when you are going to write out text you know you're writing in a fully cleared out text field. 
@@ -120,7 +119,6 @@ You don't need to do this everytime you write tests.  So should you include this
 
 Rather than keeping track of exactly what has been typed out in previous steps - it is better that we just get the screen on the app to an understood starting state.  So we use app.ClearText() to clear any text in a text field.  This isn't used all the time but if your test does back and forth through screens and re-types data into fields, this is a good practice!
 
-DRAFT:
 # What are common errors or gotcha's to look out for?
 Remember this is a UI test -- and you've got to factor in the speed of your app in writing the tests.  There is some give in all of these commands but if your app is moving slower than the test is executing then your test will fail in situations where it shouldn't.  
 
@@ -196,52 +194,7 @@ a) Suppose you are looking at two buttons on your screen.  You could simply app.
 So to continue the same example above you would type:
 app.Flash(x=>x.Marked("LoginButton") -- if you've got it right, then the Button will start flashing on the screen.
 
-This was a quick overview of working with REPL - if you want to read more, go here on our [official docs.[ <https://developer.xamarin.com/guides/testcloud/uitest/working-with/repl/>
+This was a quick overview of working with REPL - if you want to read more, go here on our [official docs.] <https://developer.xamarin.com/guides/testcloud/uitest/working-with/repl/>
 
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+This article will introduce commands as they come up within your Test Project — but if you just want to see a list of the most common commands you can look at this other [cheat sheet.] <https://github.com/andrewchungxam/XamarinTestCloudReference>
 
-<ul>Definitions of the Commands Seen in Test Recorder:
-<li>app.Tap("button1"); 
-* app.Tap("button1") is the most common guesture you'll use.  It mimics a user's tap on the app.  The "button1" represent a button marked with a "button1" id or label.
-<li>app.DismissKeyboard ();</li>
-<li>app.EnterText (x => x.Id ("edit_phone"), "5555555555");</li>
-<li>app.PressEnter();
-<li>app.ScrollUp ("CREATE", "linear_item");</li>
-<li>app.ScrollDown ("CREATE", "linear_item");</li>
-<li>app.ScrollDownTo ("CREATE", "linear_item");</li>
-<li>app.Screenshot ("User enters phone number");</li>
-<li>app.WaitForElement("button2");
-</ul>
-
-
-
-----
-<ul>Common Notations and Terms seen in Test Recorder:
-<li>app.Tap(x=>x.Marked("hello_button"));
-<li>app.Tap(x=>x.Class("UIButton"));</li>
-<li>app.Tap(x=>x.Id("hello_button"));</li>
-<li>app.Tap(x=>x.Label("hello_button"));</li>
-<li>app.Tap(x=>x.Text("Hello there!"));</li>
-</ul>
-----
-<ul>Common repl commands:
-<li>tree</li>
-<li>app.Flash("myButton");</li>
-<li>app.Flash(x=>x.All("*"));</li>
-<li>app.Flash(x => x.All("*").Class("UITextFieldLabel").Text("User ID"));</li>
-<li>app.TapCoordinates(153, 86);</li>
-<li>app.Repl ();</li>
-<li>copy
-</ul>
-----
-<ul>
-Common UI commands:
-<li>app.DismissKeyboard ();</li>
-<li>app.Screenshot ("User enters phone number");</li>
-<li>app.EnterText (x => x.Id ("edit_phone"), "5555555555");</li>
-<li>app.ScrollDownTo ("CREATE", "linear_item");</li>
-<li>app.SwipeRightToLeft (c => c.Id ("txt_title"));</li>
-<li>app.DragCoordinates (200, 400, 200, 800); // (from X, from Y, to X, to Y)</li>
-<li>app.Query(x=>x.Class("FormsTextView").Index(0)) </li>
-</ul>
-<ul>

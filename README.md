@@ -8,6 +8,8 @@ You will see these commands in both Xamarin Test Recorder and in the REPL
 This guide is meant as an explaination at first but also a cheat sheet that you can refer back to.
 We will discuss the most commonly used commands.
 
+This article that you are reading will introduce commands as they come up within your Test Project — but if you just want to see a list of the most common commands you can look at this other [cheat sheet.](https://github.com/andrewchungxam/XamarinTestCloudReference)
+
 COMMON COMMANDS - CHEAT SHEET:
 <li>app.Tap("button1"); 
 <li>app.EnterText (x => x.Id ("edit_phone"), "5555555555");</li>
@@ -53,7 +55,6 @@ In general - you should prefer to link your tests to an "Id" or a "label" over "
 For more about the general C# syntax of this => notation - take a look at this [post](http://stackoverflow.com/questions/274022/how-do-i-pronounce-as-used-in-lambda-expressions-in-net).
 
 ---------------------------
-DRAFT:
 # Why do I so often see x=>x.Class("something") and why do I sometime even see a .Index(3) after it?
 
 When you look at the commands that Test Recorder gives back to you -- it will often show up as app.Tap(x=>x.Marked("button1")).  This is the most straightforward output type that you'll see in Test Recorder.
@@ -88,22 +89,36 @@ app.Tap(x=>x.Class("UIView").Index(3));
 
 It is looking for all the UI elements of the class "UIView" -- and then please show me the 4th item of that list of elements.  (Remember counting starts at 0 for Index() ).
 
-DRAFT:
-# Why two versions of very similar commands?
-app.ScrollDown() vs. app.ScrollDown("CREATE", "linear_item")  
-app.ScrollDown() vs. app.ScrollDownTo("something")
+# Why are there two versions of very similar commands?
+For example, there is app.ScrollDown() and there is app.ScrollDownTo("my_element")
 
-specificity / speed..  
+Specificity and speed.  
+
+EXAMPLE 1
+So let's compare app.ScrollDown() vs. app.ScrollDownTo("something")
+
+If you just type app.ScrollDown() - it's easier to type out but it will only always scroll down a certain fixed amount down.  You really don't have much control besides knowing it will will generally mimic a person scrolling down on a page.
+
+However, if you write app.ScrollDownTo("my_element") then it will scroll down until it finds the item which you specify in quotes.  In this case it will scroll down to a UI element labeled "my_element".
+
+EXAMPLE 2 !!!! IMPORTANT !!!!
+Also there is app.ScrollDownTo("my_element") but also app.ScrollDownTo("my_element", "linear_layout")  
+In this case, both commands do the same thing -- but the second commands has a second input.  That second input says where to look for the ScrollDownTo.  This makes it more SPECIFIC and it will also make the command run faster because you're actually helping the test runner know where to look for the item.  So you added more SPECIFICITY and SPEED.  
+
+This particular example is important because something tests will fail because they take too long and if the test can't find the element -- it may (incorrectly) think it's because that element just doesn't exist.  So I recommend adding this particular type of specificity to your tests.
+
+
 
 This comes down to specificity of what you're looking to do and speed by which you want this command to be executed.
 
-DRAFT
 # App.ClearText() -> Why do we need this?
 
-Sometimes tests will go back and forth through screen and to fields that have been filled out or partially filled out.
+App.ClearText() will empty out a text field so that when you are going to write out text you know you're writing in a fully cleared out text field. 
+
+You don't need to do this everytime you write tests.  So should you include this?  Sometimes tests will go back and forth through screens and to fields that have been filled out or previously or partially filled out.
+
 Rather than keeping track of exactly what has been typed out in previous steps - it is better that we just get the screen on the app to an understood starting state.  So we use app.ClearText() to clear any text in a text field.  This isn't used all the time but if your test does back and forth through screens and re-types data into fields, this is a good practice!
 
-DRAFT:
 # What are common errors or gotcha's to look out for?
 Remember this is a UI test -- and you've got to factor in the speed of your app in writing the tests.  There is some give in all of these commands but if your app is moving slower than the test is executing then your test will fail in situations where it shouldn't.  
 
@@ -113,56 +128,76 @@ Here's what to watch out for:
 -keyboarding popping up and hiding buttons or other fields)
 Here's how to fix it:
 
-app.WaitForElement(x => x.Marked("logoutButton"));
-Thread.Sleep (3000); //this would be 3 seconds
+app.WaitForElement(x => x.Marked("logoutButton")); <br />
+Thread.Sleep (3000);   //this would be 3 seconds  <br />
+
+# Common REPL : Tree / FLASH / Query 
+The REPL is the interactive window that lets you see what UI elements are displaying on the mobile app's screen and it also lets you interact with those elements directly.
+
+In general, the commands are the same that you would either write yourself in Xamarin Studio or Visual Studio and they are also the same that would show up when you use Xamarin Test Recorder.
+
+If you want a list of common commands - you can click [here:] <https://github.com/andrewchungxam/XamarinTestCloudReference/blob/master/README.md>  
+
+The general workflow would look like this.  Launch REPL from Xamarin Test Recorder or you can write this directly in your tests in Xamarin Test Cloud like this:
+
+```
+[Test]
+public void LaunchRepl()
+{
+ app.Repl();
+}
+```
+
+NOTE!  Remember - app.Repl() is great for running local tests and writing out the tests.  When you are ready to actually run the tests in the cloud (on our Xamarin Test Cloud servers with actual devices) - you don't want to run this app.Repl() command.  So what you would do is comment out this test which means it will be ignored by Xamarin Test Cloud.  You comment out lines of code by add // marks before the lines of code.
+
+```
+//[Test]
+//public void LaunchRepl()
+//{
+// app.Repl();
+//}
+```
+
+GENERAL WORKFLOW:
+When you use app.Repl() - the general workflow looks like this:
+1) See what's on the screen by typing this command:
+
+```
+tree
+```
+
+2) Interact with what's on the screen with all the above commands you've learned.  For example - you might be on a login screen and you might type the following commands in REPL
+
+```
+app.Tap(x=>x.Marked("UserName");
+app.EnterText("andrew");
+app.DismissKeyboard();
+
+app.Tap(x=>x.Marked("Password");
+app.EnterText("myPassword");
+app.DismissKeyboard();
+
+app.Tap(x=>x.Marked("LoginButton"));
+```
+
+3) Next in the Repl you can type out the following word:
+
+```
+copy
+```
+
+And it will automatically copy the work that you've done.  You can now simply Paste these commands into Xamarin Studio / Visual Studio.  You may have to do some cleanup - but in general you should be good to go!  (Also sometime there will be an extra semi-colon at the end of your commands -- make sure you delete these one you're in Xamarin Studio / Visual Studio
+
+Special note:
+a) Suppose you are looking at two buttons on your screen.  You could simply app.Tap them but then if you choose the wrong one - it will actually tap the button and you'll move around the app.  Not a big deal but it can be cumbersome and take time moving from screen to screen.  In these situations - simply use the app.Flash command.  This will flash the relevant element on the screen - thereby letting you know if you've selected the correct element -- saving you the hassel of moving from screen to screen.
+
+So to continue the same example above you would type:
+app.Flash(x=>x.Marked("LoginButton") -- if you've got it right, then the Button will start flashing on the screen.
+
+This was a quick overview of working with REPL - if you want to read more, go here on our [official docs.](https://developer.xamarin.com/guides/testcloud/uitest/working-with/repl/)
 
 
 
-
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
-<ul>Definitions of the Commands Seen in Test Recorder:
-<li>app.Tap("button1"); 
-* app.Tap("button1") is the most common guesture you'll use.  It mimics a user's tap on the app.  The "button1" represent a button marked with a "button1" id or label.
-<li>app.DismissKeyboard ();</li>
-<li>app.EnterText (x => x.Id ("edit_phone"), "5555555555");</li>
-<li>app.PressEnter();
-<li>app.ScrollUp ("CREATE", "linear_item");</li>
-<li>app.ScrollDown ("CREATE", "linear_item");</li>
-<li>app.ScrollDownTo ("CREATE", "linear_item");</li>
-<li>app.Screenshot ("User enters phone number");</li>
-<li>app.WaitForElement("button2");
-</ul>
+This article will introduce commands as they come up within your Test Project — but if you just want to see a list of the most common commands you can look at this other [cheat sheet.](https://github.com/andrewchungxam/XamarinTestCloudReference)
 
 
-
-----
-<ul>Common Notations and Terms seen in Test Recorder:
-<li>app.Tap(x=>x.Marked("hello_button"));
-<li>app.Tap(x=>x.Class("UIButton"));</li>
-<li>app.Tap(x=>x.Id("hello_button"));</li>
-<li>app.Tap(x=>x.Label("hello_button"));</li>
-<li>app.Tap(x=>x.Text("Hello there!"));</li>
-</ul>
-----
-<ul>Common repl commands:
-<li>tree</li>
-<li>app.Flash("myButton");</li>
-<li>app.Flash(x=>x.All("*"));</li>
-<li>app.Flash(x => x.All("*").Class("UITextFieldLabel").Text("User ID"));</li>
-<li>app.TapCoordinates(153, 86);</li>
-<li>app.Repl ();</li>
-<li>copy
-</ul>
-----
-<ul>
-Common UI commands:
-<li>app.DismissKeyboard ();</li>
-<li>app.Screenshot ("User enters phone number");</li>
-<li>app.EnterText (x => x.Id ("edit_phone"), "5555555555");</li>
-<li>app.ScrollDownTo ("CREATE", "linear_item");</li>
-<li>app.SwipeRightToLeft (c => c.Id ("txt_title"));</li>
-<li>app.DragCoordinates (200, 400, 200, 800); // (from X, from Y, to X, to Y)</li>
-<li>app.Query(x=>x.Class("FormsTextView").Index(0)) </li>
-</ul>
-<ul>
